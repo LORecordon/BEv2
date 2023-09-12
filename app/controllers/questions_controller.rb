@@ -20,11 +20,14 @@ class QuestionsController < ApplicationController
     end
 
     def create
+        puts params[:fake_answers]
         question = Question.create(
-            prompt: params[:selectedPregunta],
-            style: 1,
-            difficulty: 1,
-            topic: params[:selectedTema],
+            prompt: params[:prompt],
+            style: params[:style],
+            answer: params[:answer],
+            difficulty: params[:difficulty],
+            topic: params[:topic],
+            fake_answers: params[:fake_answers],
             imgPoints: params[:savedPoints],
             imgLines: params[:savedLines]
             )
