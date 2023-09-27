@@ -5,7 +5,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+      t.string :first_name, null: false, default: ""
+      t.string :last_name, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :selectedType, null: false, default: "Profesor"
+      t.integer :level, null: false, default: 0
+
       t.string :auth_token, default: "0"
       ## Recoverable
       t.string   :reset_password_token
@@ -13,6 +18,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       ## Rememberable
       t.datetime :remember_created_at
+
+      t.datetime :last_login
+      t.integer :total_time, default: 0
+      t.json :topic_difficulty, default: {
+        "Resistencias En Serie Y Paralelo": 0,
+        "Campo Electrico De Cargas Puntuales": 0,
+        "Leyes De Kirchhof": 0,
+        "Campo Electrico Debido A Densidades De Carga": 0,
+        "Circuitos RC": 0
+      }
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

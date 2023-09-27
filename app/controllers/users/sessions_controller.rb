@@ -8,6 +8,8 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super do |user|
       user.generate_authentication_token
+      puts "Doing the thingy --------------------"
+      user.setSessionTime
       if user.persisted?
         render json: {
           message: "Account created",
@@ -42,6 +44,7 @@ class Users::SessionsController < Devise::SessionsController
     puts token
     user = User.where(auth_token: token).first
     if !user.nil?
+      user.setTotalTime
       user.remove_authentication_token
     else
       render json: {message: "Invalid token"}

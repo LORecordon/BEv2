@@ -7,8 +7,8 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.integer :difficulty
       t.string :topic
       t.text :fake_answers, array: true, default: []
-      t.json :imgPoints
-      t.json :imgLines
+      t.json :imgPoints, default: []
+      t.json :imgLines, default: []
 
       t.timestamps
     end

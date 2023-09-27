@@ -25,4 +25,24 @@ class User < ApplicationRecord
       break token unless User.where(auth_token: token).exists?
     end
   end
+
+  def setSessionTime
+    self.last_login = Time.now
+    self.save
+    puts "Hahahahahahah"
+    puts self.last_login
+  end
+
+  def setTotalTime
+    if self.last_login
+      ttime = Time.now - self.last_login
+      if self.total_time.nil?
+        self.total_time = ttime
+      else
+        self.total_time = self.total_time + ttime
+      end
+      self.last_login = nil
+      self.save
+    end
+  end
 end

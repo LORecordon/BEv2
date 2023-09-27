@@ -8,7 +8,8 @@ class QuestionsController < ApplicationController
     end
 
     def show
-        render json: @question
+        question = Question.find(params[:id])
+        render json: question
     end
 
     def find
@@ -40,7 +41,28 @@ class QuestionsController < ApplicationController
         end 
     end
 
+    def destroy
+        qs = Question.find(params[:q_id])
+        if qs.destroy
+            render json: {message: "Question Deleted"}. status: :ok
+        else
+            render json: {message: "Couldnt Delete Question"}, status: :unprocessable_entity
+        end
+    end
+
+    def update
+        qs = Question.find(params[:q_id])
+        if qs.update(question_params)
+            render json: qs, status: :ok
+        else
+            render json: {error: "Couldnt Update Question"}, status: :unprocessable_entity
+        end
+    end
+
     private
+
+    def question_params
+        params.permit(:prompt, :style, :answer, :difficulty, :topic, :fake_answers, :imgPoints, :imgLines)
 
     def set_question
         @question = Question.find(params[:id])

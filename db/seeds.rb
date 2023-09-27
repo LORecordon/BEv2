@@ -10,6 +10,9 @@ Rails.application.eager_load!
 
 # PREGUNTAS RSP
 
+User.create(email: "first@gmail.com", password: "12345678")
+User.create(email: "secondt@gmail.com", password: "12345678")
+
 Question.create(
     prompt: "Que es CORRECTO afirmar con respecto a la corriente:",
     style: 0,

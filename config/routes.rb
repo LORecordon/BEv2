@@ -8,4 +8,16 @@ Rails.application.routes.draw do
       get 'find'
     end
   end
+  resource :tasks do
+    collection do
+      get 'index'
+      get 'taskQs'
+    end
+  end
+  resource :user_profiles do
+    collection do
+      get "userDashboard"
+      get "updateLevel"
+    end
+  end
 end
