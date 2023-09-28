@@ -14,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           message: "Account created",
           email: user.email,
           auth_token: user.auth_token
+          selectedType: user.selectedType
         }, status: :created
       else 
         render json: { error: user.errors.full_messages}, status: :unprocessable_entity

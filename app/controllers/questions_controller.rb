@@ -42,16 +42,16 @@ class QuestionsController < ApplicationController
     end
 
     def destroy
-        qs = Question.find(params[:q_id])
+        qs = Question.find(params[:id])
         if qs.destroy
-            render json: {message: "Question Deleted"}. status: :ok
+            render json: {message: "Question Deleted"}, status: :ok
         else
             render json: {message: "Couldnt Delete Question"}, status: :unprocessable_entity
         end
     end
 
     def update
-        qs = Question.find(params[:q_id])
+        qs = Question.find(params[:id])
         if qs.update(question_params)
             render json: qs, status: :ok
         else
@@ -63,6 +63,7 @@ class QuestionsController < ApplicationController
 
     def question_params
         params.permit(:prompt, :style, :answer, :difficulty, :topic, :fake_answers, :imgPoints, :imgLines)
+    end
 
     def set_question
         @question = Question.find(params[:id])
