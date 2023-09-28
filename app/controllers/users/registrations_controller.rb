@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         render json: {
           message: "Account created",
           email: user.email,
-          auth_token: user.auth_token
+          auth_token: user.auth_token,
           selectedType: user.selectedType
         }, status: :created
       else 

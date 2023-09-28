@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
       user.setSessionTime
       if user.persisted?
         render json: {
-          message: "Account created",
+          message: "Logged In",
           email: user.email,
           auth_token: user.auth_token,
           selectedType: user.selectedType

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     collection do
       get "userDashboard"
       get "updateLevel"
+      get "users", to: "user_profiles#index"
     end
   end
 end

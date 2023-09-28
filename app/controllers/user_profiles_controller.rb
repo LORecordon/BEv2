@@ -1,6 +1,19 @@
 class UserProfilesController < ApplicationController
     before_action :authenticate_user_by_token
 
+    def index 
+        if !params[:selectedType]
+            @users = User.all
+        else
+            @users = User.where(selectedType: params[:selectedType])
+        end
+        if !@users.nil?
+            render json: @users
+        else
+            render json: {message: "No users found"}, status: :ok
+        end
+    end
+
     def userDashboard
         render json: @user
     end

@@ -81,7 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_183945) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "last_login"
-    t.integer "total_time"
+    t.integer "total_time", default: 0
     t.json "topic_difficulty", default: {"Resistencias En Serie Y Paralelo"=>0, "Campo Electrico De Cargas Puntuales"=>0, "Leyes De Kirchhof"=>0, "Campo Electrico Debido A Densidades De Carga"=>0, "Circuitos RC"=>0}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
